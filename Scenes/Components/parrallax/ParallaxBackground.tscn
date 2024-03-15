@@ -14,7 +14,7 @@ scrolling_speed = 50.0
 motion_mirroring = Vector2( 3600, 6400 )
 
 [node name="Bg1" type="TextureRect" parent="ParallaxLayer"]
-modulate = Color( 1, 1, 1, 0.196078 )
+modulate = Color( 1, 1, 1, 0.117647 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_right = 3600.0
