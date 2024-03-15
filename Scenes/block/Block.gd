@@ -61,7 +61,7 @@ func shake(delta):
 func take_damage(damage):
 	health = max(health - damage, 0)
 	update_healh_label()
-	add_trauma(0.5)
+	add_trauma(0.8)
 	if health <= 0:
 		queue_free()
 #	add_label_particle(damage)
