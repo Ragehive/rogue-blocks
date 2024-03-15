@@ -24,11 +24,18 @@ const MAX_HEALTH = 10
 #NODES 
 onready var body = $Body
 onready var bullet_scene = preload("res://Scenes/Components/bullet/Bullet.tscn")
+onready var tween = $Tween
 
 #TIMERS
 onready var shootTimer = $Timers/ShootTimer
 
 func _ready():
+	intro_animation()
+	pass
+
+func intro_animation():
+	tween.start()
+	tween.interpolate_property(body, "position:y", body.position.y, 0, 1, Tween.TRANS_EXPO,Tween.EASE_OUT)
 	pass
 
 func _physics_process(delta):
@@ -55,6 +62,7 @@ func movement(delta):
 	
 	if Input.is_action_just_pressed("move"):
 		shootTimer.start()
+		shoot_bullet()
 		release = false
 #		kickback_vel.y = 0
 		trauma = 0.2

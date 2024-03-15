@@ -12,6 +12,7 @@ script = ExtResource( 1 )
 shape = SubResource( 1 )
 
 [node name="Body" type="Node2D" parent="."]
+position = Vector2( 0, 1500 )
 
 [node name="ColorRect" type="ColorRect" parent="Body"]
 anchor_left = 0.5
@@ -26,6 +27,8 @@ margin_bottom = 25.0
 [node name="Timers" type="Node2D" parent="."]
 
 [node name="ShootTimer" type="Timer" parent="Timers"]
-wait_time = 0.1
+wait_time = 0.5
+
+[node name="Tween" type="Tween" parent="."]
 
 [connection signal="timeout" from="Timers/ShootTimer" to="." method="_on_ShootRate_timeout"]

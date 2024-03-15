@@ -1,8 +1,10 @@
 extends StaticBody2D
 
 #VARIABLES
-var health = 100
-var speed = 50
+var health = 2
+var min_health = 0
+var max_health = 0
+var speed = 100
 
 #SHAKE
 var trauma = 0.1  # Current shake strength.
@@ -16,6 +18,12 @@ onready var label = $Body/Label
 onready var label_particle_scene = preload("res://Scenes/Components/LabelParticle/LabelParticle.tscn")
 
 func _ready():
+	start()
+	pass
+
+func start():
+	health = round(rand_range(1, health))
+	label.text = str(health)
 	pass
 
 func _process(delta):
@@ -54,5 +62,7 @@ func take_damage(damage):
 	health = max(health - damage, 0)
 	update_healh_label()
 	add_trauma(0.5)
+	if health <= 0:
+		queue_free()
 #	add_label_particle(damage)
 	pass
