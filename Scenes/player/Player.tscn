@@ -12,7 +12,6 @@ script = ExtResource( 1 )
 shape = SubResource( 1 )
 
 [node name="Body" type="Node2D" parent="."]
-position = Vector2( 0, 1500 )
 
 [node name="ColorRect" type="ColorRect" parent="Body"]
 anchor_left = 0.5

@@ -34,6 +34,7 @@ func _ready():
 	pass
 
 func intro_animation():
+	body.position.y = 1500
 	tween.start()
 	tween.interpolate_property(body, "position:y", body.position.y, 0, 1, Tween.TRANS_EXPO,Tween.EASE_OUT)
 	pass
