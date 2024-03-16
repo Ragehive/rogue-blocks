@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Scenes/block/Block.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Fonts/Uni Sans Heavy.otf" type="DynamicFontData" id=2]
+[ext_resource path="res://Assets/sfx/Block_damage_sfx.wav" type="AudioStream" id=3]
 
 [sub_resource type="DynamicFont" id=2]
 size = 64
@@ -47,3 +48,17 @@ valign = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
+
+[node name="Sfx" type="Node2D" parent="."]
+
+[node name="DamageSfx" type="AudioStreamPlayer" parent="Sfx"]
+stream = ExtResource( 3 )
+volume_db = -10.0
+pitch_scale = 2.14
+mix_target = 2
+
+[node name="DamageSfx2" type="AudioStreamPlayer" parent="Sfx"]
+stream = ExtResource( 3 )
+volume_db = -10.0
+pitch_scale = 2.14
+mix_target = 2
