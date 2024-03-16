@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Scenes/block/Block.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Fonts/Uni Sans Heavy.otf" type="DynamicFontData" id=2]
 [ext_resource path="res://Assets/sfx/Block_damage_sfx.wav" type="AudioStream" id=3]
+[ext_resource path="res://Assets/sfx/Block death sfx.wav" type="AudioStream" id=4]
 
 [sub_resource type="DynamicFont" id=2]
 size = 64
@@ -57,8 +58,10 @@ volume_db = -10.0
 pitch_scale = 2.14
 mix_target = 2
 
-[node name="DamageSfx2" type="AudioStreamPlayer" parent="Sfx"]
-stream = ExtResource( 3 )
+[node name="Deathsfx" type="AudioStreamPlayer" parent="Sfx"]
+stream = ExtResource( 4 )
 volume_db = -10.0
 pitch_scale = 2.14
 mix_target = 2
+
+[connection signal="finished" from="Sfx/Deathsfx" to="." method="_on_Deathsfx_finished"]

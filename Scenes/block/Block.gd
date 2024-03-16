@@ -64,7 +64,13 @@ func take_damage(damage):
 	add_trauma(0.8)
 	$Sfx/DamageSfx.play()
 	if health <= 0:
-		queue_free()
+		$Sfx/Deathsfx.play()
+		$CollisionShape2D.disabled = true
+		hide()
 		Global.score += max_health
 #	add_label_particle(damage)
 	pass
+
+
+func _on_Deathsfx_finished():
+	queue_free()
