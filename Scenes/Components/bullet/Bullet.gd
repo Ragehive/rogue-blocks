@@ -4,12 +4,14 @@ var speed = Vector2(0, -800)
 var damage = 1
 var critical_damage_randomness = 10
 var dead = false
+onready var sfx = $Sounds/enter
 
 #NODES
 onready var hit_particle_scene = preload("res://Scenes/Components/HitParticle/HitParticle.tscn")
 
 func _ready():
 	randomize()
+	sfx.play()
 	pass
 
 func _physics_process(delta):
