@@ -2,7 +2,7 @@ extends KinematicBody2D
 
 var speed = Vector2(0, -800)
 var damage = 1
-var critical_damage = 2
+var critical_damage_randomness = 10
 var dead = false
 
 #NODES
@@ -22,8 +22,14 @@ func instance_hit_particle():
 	pass
 
 func add_damage():
-	return round(damage + rand_range(critical_damage, 0))
+	return round(damage + add_critical_damage())
 	pass
+
+func add_critical_damage():
+	var critical_damage = 0
+	var rand = randi()%critical_damage_randomness
+	if (rand == 0): critical_damage = rand_range(0, critical_damage)
+	return critical_damage
 
 func _on_Area2D_body_entered(body):
 #	player.pitch_scale = 1

@@ -5,7 +5,7 @@ var is_active = true
 var release = false
 
 # MOVeMENT 
-var offset = Vector2(0, -150)
+var offset = Vector2(0, -100)
 var move_lerp = 10
 var last_pos = Vector2.ZERO
 var kickback_rate = 10

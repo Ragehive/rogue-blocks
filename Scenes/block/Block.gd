@@ -2,8 +2,7 @@ extends StaticBody2D
 
 #VARIABLES
 var health = 2
-var min_health = 0
-var max_health = 0
+var max_health = 2
 var speed = 100
 
 #SHAKE
@@ -23,6 +22,7 @@ func _ready():
 
 func start():
 	health = round(rand_range(1, health))
+	max_health = health
 	label.text = str(health)
 	pass
 
@@ -64,5 +64,6 @@ func take_damage(damage):
 	add_trauma(0.8)
 	if health <= 0:
 		queue_free()
+		Global.score += max_health
 #	add_label_particle(damage)
 	pass
