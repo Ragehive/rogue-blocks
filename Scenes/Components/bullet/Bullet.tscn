@@ -32,6 +32,7 @@ stream = ExtResource( 3 )
 volume_db = -10.0
 pitch_scale = 2.14
 mix_target = 2
+bus = "sfx"
 
 [node name="Areas" type="Node2D" parent="."]
 

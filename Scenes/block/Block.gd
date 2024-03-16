@@ -65,7 +65,7 @@ func take_damage(damage):
 	$Sfx/DamageSfx.play()
 	if health <= 0:
 		$Sfx/Deathsfx.play()
-		$CollisionShape2D.disabled = true
+		$CollisionShape2D.set_deferred("disabled", true)
 		hide()
 		Global.score += max_health
 #	add_label_particle(damage)

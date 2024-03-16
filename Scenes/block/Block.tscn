@@ -57,11 +57,13 @@ stream = ExtResource( 3 )
 volume_db = -10.0
 pitch_scale = 2.14
 mix_target = 2
+bus = "sfx"
 
 [node name="Deathsfx" type="AudioStreamPlayer" parent="Sfx"]
 stream = ExtResource( 4 )
 volume_db = -10.0
 pitch_scale = 2.14
 mix_target = 2
+bus = "sfx"
 
 [connection signal="finished" from="Sfx/Deathsfx" to="." method="_on_Deathsfx_finished"]
