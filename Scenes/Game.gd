@@ -15,3 +15,7 @@ func instance_player():
 	
 	
 	pass
+
+
+func game_end():
+	Global.save_data()
