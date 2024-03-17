@@ -19,7 +19,7 @@ script = ExtResource( 2 )
 wait_time = 1.6
 
 [node name="DifficulyTimer" type="Timer" parent="."]
-wait_time = 20.0
+wait_time = 15.0
 
 [node name="BlockSpeedTimer" type="Timer" parent="."]
 wait_time = 60.0
