@@ -14,3 +14,7 @@ func instance_player():
 	player.position = Vector2(pos.x/2, pos.y - (pos.y/4))
 	add_child(player)
 	pass
+
+
+func game_end():
+	Global.save_data()

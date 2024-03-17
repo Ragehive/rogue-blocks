@@ -6,5 +6,5 @@ func _ready():
 
 
 func _process(delta):
-	text = str(Global.score)
+	text = str(Global.highscore)
 	pass
