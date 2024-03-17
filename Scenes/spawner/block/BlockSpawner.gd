@@ -4,11 +4,13 @@ onready var block_scene = preload("res://Scenes/block/Block.tscn")
 onready var positions = $positions
 onready var spawn_timer = $SpawnTimer
 onready var diff_timer = $DifficulyTimer
+onready var block_speed_timer = $BlockSpeedTimer
 
 onready var block_amount = 2
 var positionArr = []
 
 var health_diff = 0
+var reduce_block_speed = 0
 
 func _ready():
 	randomize()
@@ -22,6 +24,7 @@ func _ready():
 func start():
 	spawn_timer.start()
 	diff_timer.start()
+	block_speed_timer.start()
 	spawn_blocks(rand_range(0,4))
 	pass
 
@@ -43,7 +46,8 @@ func spawn_blocks(block_amt):
 		
 		var block = block_scene.instance()
 		block.position = pos
-		block.health = block.health + health_diff
+		block.health = block.health + int(health_diff)
+		block.speed -= reduce_block_speed
 		add_child(block)
 		arr.remove(get_index)
 	pass
@@ -56,5 +60,14 @@ func _on_SpawnTimer_timeout():
 
 
 func _on_DifficulyTimer_timeout():
-	health_diff += 2
+	health_diff += 1.25
+	pass # Replace with function body.
+
+
+func _on_BlockSpeedTimer_timeout():
+	if spawn_timer.wait_time >= 2.2:
+		block_speed_timer.stop()
+		return
+	spawn_timer.wait_time += 0.2
+	reduce_block_speed += 10
 	pass # Replace with function body.

@@ -1,0 +1,85 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Scenes/menus/levelup/LevelUpMenu.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Fonts/Uni Sans Heavy.otf" type="DynamicFontData" id=2]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0, 0, 0, 0.117647 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 18
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 2 )
+
+[node name="LevelUpMenu" type="Node2D"]
+pause_mode = 2
+script = ExtResource( 1 )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -320.0
+margin_top = 10.0
+margin_right = 320.0
+margin_bottom = 410.0
+rect_min_size = Vector2( 450, 200 )
+custom_constants/separation = 20
+
+[node name="Panel" type="Panel" parent="HBoxContainer"]
+margin_right = 200.0
+margin_bottom = 350.0
+rect_min_size = Vector2( 200, 350 )
+custom_styles/panel = SubResource( 1 )
+
+[node name="Label" type="Label" parent="HBoxContainer/Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = SubResource( 2 )
+text = "Increase bullet damage"
+align = 1
+valign = 1
+autowrap = true
+
+[node name="Panel2" type="Panel" parent="HBoxContainer"]
+margin_left = 220.0
+margin_right = 420.0
+margin_bottom = 350.0
+rect_min_size = Vector2( 200, 350 )
+custom_styles/panel = SubResource( 1 )
+
+[node name="Label" type="Label" parent="HBoxContainer/Panel2"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = SubResource( 2 )
+text = "Increase bullet speed"
+align = 1
+valign = 1
+autowrap = true
+
+[node name="Panel3" type="Panel" parent="HBoxContainer"]
+margin_left = 440.0
+margin_right = 640.0
+margin_bottom = 350.0
+rect_min_size = Vector2( 200, 350 )
+custom_styles/panel = SubResource( 1 )
+
+[node name="Label" type="Label" parent="HBoxContainer/Panel3"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = SubResource( 2 )
+text = "Increase critical damage"
+align = 1
+valign = 1
+autowrap = true
+
+[node name="Tween" type="Tween" parent="."]
+
+[node name="DelayTimer" type="Timer" parent="."]
+wait_time = 0.08
+one_shot = true
+
+[connection signal="gui_input" from="HBoxContainer/Panel" to="." method="_on_Panel_gui_input"]
+[connection signal="gui_input" from="HBoxContainer/Panel2" to="." method="_on_Panel2_gui_input"]
+[connection signal="gui_input" from="HBoxContainer/Panel3" to="." method="_on_Panel3_gui_input"]
+[connection signal="timeout" from="DelayTimer" to="." method="_on_DelayTimer_timeout"]

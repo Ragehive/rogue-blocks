@@ -58,12 +58,19 @@ func shake(delta):
 		_trauma()
 	pass
 
+func check_level_up():
+	if Global.score >= Global.next_score:
+		Global.emit_signal("level_up")
+	pass
+
 func take_damage(damage):
 	health = max(health - damage, 0)
 	update_healh_label()
 	add_trauma(0.8)
+	
 	if health <= 0:
 		queue_free()
 		Global.score += max_health
+		check_level_up()
 #	add_label_particle(damage)
 	pass

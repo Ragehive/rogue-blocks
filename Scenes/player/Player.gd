@@ -31,8 +31,9 @@ onready var shootTimer = $Timers/ShootTimer
 
 func _ready():
 	intro_animation()
+	Global.connect("level_up_player", self, "add_upgrades")
 	pass
-
+	
 func intro_animation():
 	body.position.y = 1500
 	tween.start()
@@ -84,6 +85,13 @@ func shoot_bullet():
 	get_parent().add_child(bullet)
 	pass
 
+func add_upgrades(level_up_type):
+	print(level_up_type, "evel up")
+	match (level_up_type):
+		"INCREASE_BULLET_SPEED":
+			shootTimer.wait_time = clamp(shootTimer.wait_time - 0.075, 0.05, 0.8)
+			print(shootTimer.wait_time, 'asd')
+	pass
 func _on_ShootRate_timeout():
 	shoot_bullet()
 	pass # Replace with function body.
