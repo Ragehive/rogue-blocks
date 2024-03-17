@@ -19,10 +19,10 @@ script = ExtResource( 2 )
 wait_time = 1.6
 
 [node name="DifficulyTimer" type="Timer" parent="."]
-wait_time = 10.0
+wait_time = 20.0
 
 [node name="BlockSpeedTimer" type="Timer" parent="."]
-wait_time = 40.0
+wait_time = 60.0
 
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_SpawnTimer_timeout"]
 [connection signal="timeout" from="DifficulyTimer" to="." method="_on_DifficulyTimer_timeout"]
