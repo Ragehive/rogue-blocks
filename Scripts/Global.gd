@@ -4,9 +4,12 @@ extends Node
 const FILEPATH = "user://GAMEDATA.save"
 var score = 0
 var next_score = 10
-var high_score = 0
+var highscore = 0
 var level = 1
 var next_level = 2
+var coin = 0
+var sound_turned_off = false
+var music_turned_off = false
 
 var is_levelling_up = false
 
@@ -42,6 +45,7 @@ const upgrades = {
 
 func _ready():
 	reset_upgrades()
+	load_data()
 	pass
 
 func reset_upgrades():
@@ -53,24 +57,14 @@ func insert_upgrades(text):
 	upgrades.speed += upgrade.speed
 	upgrades.critical_damage += upgrades.critical_damage
 	print("uprgades", upgrades)
-var highscore = 0
-var coin = 0
-var level = 1
-var sound_turned_off = false
-var music_turned_off = false
-
-func _ready():
-	load_data()
-	pass
 
 func save():
 	var data = {
 		"Highscore": highscore,
-		"Score": score,
 		"Coin": coin,
 		"Level": level,
 		"Sound": sound_turned_off,
-		"music": music_turned_off
+		"Music": music_turned_off
 	}
 	return data
 
@@ -89,10 +83,10 @@ func load_data():
 		var data = save_data.get_var()
 		coin = data["Coin"]
 		highscore = data["Highscore"]
-		score = data["Score"]
 		level = data["Level"]
 		sound_turned_off = data["Sound"]
 		music_turned_off = data["Music"]
 		save_data.close()
+	print(highscore, 'highscore')
 	pass
 	
