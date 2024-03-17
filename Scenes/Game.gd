@@ -12,8 +12,6 @@ func instance_player():
 	var player = player_scene.instance()
 	player.position = Vector2(pos.x/2, pos.y - (pos.y/4))
 	add_child(player)
-	
-	
 	pass
 
 
