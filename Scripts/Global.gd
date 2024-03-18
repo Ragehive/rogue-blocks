@@ -4,7 +4,7 @@ extends Node
 const FILEPATH = "user://GAMEDATA.save"
 var score = 0
 var next_score = 10
-var next_score_multiplier = 1.5
+var next_score_multiplier = 1.25
 var highscore = 0
 var level = 1
 var next_level = 2
@@ -72,7 +72,9 @@ func reset_upgrades():
 func insert_upgrades(text):
 	var upgrade = level_up_options[text]
 	print(upgrade, 'upgrade')
-	if upgrade.has('damage'): upgrades.damaage += upgrade.damage
+	if upgrade.has('damage'): 
+		print("yes has damage")
+		upgrades.damage += upgrade.damage
 	if upgrade.has('speed'): upgrades.speed += upgrade.speed
 	if upgrade.has('critical_damage'): upgrades.critical_damage += upgrades.critical_damage
 	

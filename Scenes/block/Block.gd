@@ -3,7 +3,7 @@ extends StaticBody2D
 #VARIABLES
 var health = 2
 var max_health = 2
-var speed = 100
+var speed = 80
 
 #SHAKE
 var trauma = 0.1  # Current shake strength.

@@ -65,7 +65,7 @@ func _on_DifficulyTimer_timeout():
 
 
 func _on_BlockSpeedTimer_timeout():
-	if spawn_timer.wait_time >= 2.2:
+	if spawn_timer.wait_time >= 2.6:
 		block_speed_timer.stop()
 		return
 	spawn_timer.wait_time += 0.2
