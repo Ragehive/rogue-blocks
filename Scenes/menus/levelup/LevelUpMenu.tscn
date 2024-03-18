@@ -28,7 +28,7 @@ custom_constants/separation = 20
 
 [node name="Panel" type="Panel" parent="HBoxContainer"]
 margin_right = 200.0
-margin_bottom = 350.0
+margin_bottom = 400.0
 rect_min_size = Vector2( 200, 350 )
 custom_styles/panel = SubResource( 1 )
 
@@ -44,7 +44,7 @@ autowrap = true
 [node name="Panel2" type="Panel" parent="HBoxContainer"]
 margin_left = 220.0
 margin_right = 420.0
-margin_bottom = 350.0
+margin_bottom = 400.0
 rect_min_size = Vector2( 200, 350 )
 custom_styles/panel = SubResource( 1 )
 
@@ -60,7 +60,7 @@ autowrap = true
 [node name="Panel3" type="Panel" parent="HBoxContainer"]
 margin_left = 440.0
 margin_right = 640.0
-margin_bottom = 350.0
+margin_bottom = 400.0
 rect_min_size = Vector2( 200, 350 )
 custom_styles/panel = SubResource( 1 )
 

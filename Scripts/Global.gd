@@ -4,6 +4,7 @@ extends Node
 const FILEPATH = "user://GAMEDATA.save"
 var score = 0
 var next_score = 10
+var next_score_multiplier = 1.5
 var highscore = 0
 var level = 1
 var next_level = 2
@@ -18,9 +19,9 @@ signal update_display
 signal level_up_player(level_up_type)
 
 #LEVEL UP OPTIONS
-const level_up = {
+const level_up_options = {
 	"INCREASE_BULLET_DAMAGE": {
-		"damage": 0.85,
+		"damage": 1,
 		"speed": 0.0,
 		"critical_damage": 0.0
 	},
@@ -34,7 +35,15 @@ const level_up = {
 		"speed": 0.0,
 		"critical_damage": 1.0
 	},
+	"INCREASE_LEVEL_UP_POINTS": {},
+	"INCREASE_COINS": {},
+	"INCREASE_POWERUP_CHANCE": {},
+	"EXTRA_LIFE": {}
 }
+#temporal: time freeze, magnet, bomb
+#powerups examples: extra life, area of effect damage, ricochet, 
+#piercing shots, time freeze,zap lightning, experience boost
+#items e.g coin magnet, bomb, health, coins
 
 #UPGRADES
 const upgrades = {
@@ -42,21 +51,31 @@ const upgrades = {
 	"speed": 0.0,
 	"critical_damage": 0.0
 }
-
 func _ready():
 	reset_upgrades()
 	load_data()
+
 	pass
+
+func shuffle_level_points():
+	randomize()
+	var result = []
+	var shuffled_keys = level_up_options.keys()
+	shuffled_keys.shuffle()
+	for key in shuffled_keys:
+		result.append(key)
+	return result
 
 func reset_upgrades():
 	for i in upgrades: upgrades[i] = 0
 
 func insert_upgrades(text):
-	var upgrade = level_up[text]
-	upgrades.damage += upgrade.damage
-	upgrades.speed += upgrade.speed
-	upgrades.critical_damage += upgrades.critical_damage
-	print("uprgades", upgrades)
+	var upgrade = level_up_options[text]
+	print(upgrade, 'upgrade')
+	if upgrade.has('damage'): upgrades.damaage += upgrade.damage
+	if upgrade.has('speed'): upgrades.speed += upgrade.speed
+	if upgrade.has('critical_damage'): upgrades.critical_damage += upgrades.critical_damage
+	
 
 func save():
 	var data = {
@@ -89,4 +108,3 @@ func load_data():
 		save_data.close()
 	print(highscore, 'highscore')
 	pass
-	
