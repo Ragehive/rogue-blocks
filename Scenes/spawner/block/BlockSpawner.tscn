@@ -16,13 +16,13 @@ script = ExtResource( 2 )
 [node name="pos4" type="Position2D" parent="positions"]
 
 [node name="SpawnTimer" type="Timer" parent="."]
-wait_time = 2.0
+wait_time = 1.8
 
 [node name="DifficulyTimer" type="Timer" parent="."]
 wait_time = 30.0
 
 [node name="BlockSpeedTimer" type="Timer" parent="."]
-wait_time = 120.0
+wait_time = 60.0
 
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_SpawnTimer_timeout"]
 [connection signal="timeout" from="DifficulyTimer" to="." method="_on_DifficulyTimer_timeout"]

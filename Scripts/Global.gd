@@ -4,7 +4,7 @@ extends Node
 const FILEPATH = "user://GAMEDATA.save"
 var score = 0
 var next_score = 10
-var next_score_multiplier = 1.25
+var next_score_multiplier = 1.5
 var highscore = 0
 var level = 1
 var next_level = 2

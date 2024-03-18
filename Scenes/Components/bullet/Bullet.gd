@@ -9,7 +9,7 @@ var features = {
 }
 
 #NODES
-onready var hit_particle_scene = preload("res://Scenes/Components/HitParticle/HitParticle.tscn")
+onready var hit_particle_scene = preload("res://Scenes/Components/particles/HitParticle/HitParticle.tscn")
 
 func _ready():
 	randomize()

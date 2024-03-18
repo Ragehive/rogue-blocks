@@ -3,7 +3,7 @@ extends StaticBody2D
 #VARIABLES
 var health = 2
 var max_health = 2
-var speed = 80
+var speed = 90
 
 #SHAKE
 var trauma = 0.1  # Current shake strength.
@@ -14,7 +14,8 @@ export var decay = 1.4
 #NODES
 onready var body = $Body
 onready var label = $Body/Label
-onready var label_particle_scene = preload("res://Scenes/Components/LabelParticle/LabelParticle.tscn")
+onready var block_particle_scene = preload("res://Scenes/Components/particles/BlockParticle/BlockParticle.tscn")
+
 
 func _ready():
 	start()
@@ -45,11 +46,18 @@ func update_healh_label():
 	label.text = str(health)
 	pass
 
-func add_label_particle(damage):
-	var object = label_particle_scene.instance()
-	object.global_position = global_position + Vector2(70,-50)
-	object.get_node("Body/Label").text = "-" + str(damage)
-	get_parent().add_child(object)
+#func add_label_particle(damage):
+#	var object = label_particle_scene.instance()
+#	object.global_position = global_position + Vector2(70,-50)
+#	object.get_node("Body/Label").text = "-" + str(damage)
+#	get_parent().add_child(object)
+#	pass
+
+func add_block_particle():
+	var scene = block_particle_scene.instance()
+	scene.global_position = global_position
+	get_parent().add_child(scene)
+	
 	pass
 
 func shake(delta):
@@ -69,6 +77,7 @@ func take_damage(damage):
 	add_trauma(0.8)
 	
 	if health <= 0:
+		add_block_particle()
 		queue_free()
 		Global.score += max_health
 		check_level_up()
