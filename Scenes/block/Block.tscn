@@ -54,14 +54,14 @@ shape = SubResource( 1 )
 
 [node name="DamageSfx" type="AudioStreamPlayer" parent="Sfx"]
 stream = ExtResource( 3 )
-volume_db = -10.0
-pitch_scale = 2.14
+volume_db = -19.455
+pitch_scale = 1.14
 mix_target = 2
 bus = "sfx"
 
 [node name="Deathsfx" type="AudioStreamPlayer" parent="Sfx"]
 stream = ExtResource( 4 )
-volume_db = -10.0
+volume_db = -25.364
 pitch_scale = 2.14
 mix_target = 2
 bus = "sfx"
