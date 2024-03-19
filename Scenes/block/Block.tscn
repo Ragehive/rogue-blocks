@@ -3,7 +3,7 @@
 [ext_resource path="res://Scenes/block/Block.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Fonts/Uni Sans Heavy.otf" type="DynamicFontData" id=2]
 [ext_resource path="res://Assets/sfx/Block_damage_sfx.wav" type="AudioStream" id=3]
-[ext_resource path="res://Assets/sfx/Block death sfx.wav" type="AudioStream" id=4]
+[ext_resource path="res://Assets/sfx/Cartoon Accent.wav" type="AudioStream" id=4]
 
 [sub_resource type="DynamicFont" id=2]
 size = 64
