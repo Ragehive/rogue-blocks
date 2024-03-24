@@ -10,7 +10,7 @@ var sound_turned_off = false
 var music_turned_off = false
 
 func _ready():
-	load_data()
+#	load_data()
 	pass
 
 func save():
