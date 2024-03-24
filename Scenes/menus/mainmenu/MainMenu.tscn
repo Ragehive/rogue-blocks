@@ -2,7 +2,7 @@
 
 [ext_resource path="res://Assets/Fonts/Uni Sans Heavy.otf" type="DynamicFontData" id=1]
 [ext_resource path="res://Scenes/themes/normalButton.tres" type="Theme" id=2]
-[ext_resource path="res://Scripts/MainMenu.gd" type="Script" id=3]
+[ext_resource path="res://Scenes/menus/mainmenu/MainMenu.gd" type="Script" id=3]
 [ext_resource path="res://Scenes/Components/parrallax/ParallaxBackground.tscn" type="PackedScene" id=4]
 
 [sub_resource type="DynamicFont" id=11]
@@ -10,14 +10,14 @@ size = 32
 font_data = ExtResource( 1 )
 
 [sub_resource type="DynamicFont" id=1]
-size = 140
+size = 110
 use_mipmaps = true
 use_filter = true
-extra_spacing_char = -4
+extra_spacing_char = -7
 font_data = ExtResource( 1 )
 
 [sub_resource type="DynamicFont" id=12]
-size = 64
+size = 120
 use_mipmaps = true
 use_filter = true
 extra_spacing_char = -6
@@ -73,13 +73,14 @@ margin_right = 360.0
 margin_bottom = 946.0
 
 [node name="Label" type="Label" parent="Name"]
-margin_left = 119.0
-margin_top = 402.0
-margin_right = 600.0
-margin_bottom = 543.0
+margin_left = 180.0
+margin_top = 417.0
+margin_right = 539.0
+margin_bottom = 528.0
 custom_colors/font_color = Color( 0.368627, 1, 0.509804, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
-custom_constants/shadow_offset_y = 7
+custom_constants/shadow_offset_x = 8
+custom_constants/shadow_offset_y = 8
 custom_fonts/font = SubResource( 1 )
 text = "BLOCKS"
 align = 1
@@ -88,10 +89,13 @@ valign = 1
 [node name="Label" type="Label" parent="Name/Label"]
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = -237.5
-margin_top = -52.0
-margin_right = -56.5
-margin_bottom = 13.0
+margin_left = -180.0
+margin_top = -112.0
+margin_right = 180.0
+margin_bottom = 9.0
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 8
+custom_constants/shadow_offset_y = 8
 custom_fonts/font = SubResource( 12 )
 text = "ROGUE"
 
@@ -149,34 +153,6 @@ custom_fonts/font = SubResource( 8 )
 text = "QUIT"
 icon_align = 1
 
-[node name="Store" type="Button" parent="Buttons"]
-anchor_top = 1.0
-anchor_bottom = 1.0
-margin_top = -60.0
-margin_right = 235.96
-grow_horizontal = 2
-grow_vertical = 2
-theme = ExtResource( 2 )
-custom_fonts/font = SubResource( 8 )
-text = "STORE"
-icon_align = 1
-
-[node name="Leaderboard" type="Button" parent="Buttons"]
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = -300.0
-margin_top = -60.0
-grow_horizontal = 2
-grow_vertical = 2
-theme = ExtResource( 2 )
-custom_fonts/font = SubResource( 8 )
-text = "LEADERBOARD"
-icon_align = 1
-
 [connection signal="pressed" from="Buttons/Play" to="." method="_on_Play_pressed"]
 [connection signal="pressed" from="Buttons/Settings" to="." method="_on_Settings_pressed"]
 [connection signal="pressed" from="Buttons/Quit" to="." method="_on_Quit_pressed"]
-[connection signal="pressed" from="Buttons/Store" to="." method="_on_Store_pressed"]
-[connection signal="pressed" from="Buttons/Leaderboard" to="." method="_on_Leaderboard_pressed"]
