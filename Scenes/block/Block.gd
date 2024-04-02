@@ -15,7 +15,7 @@ export var decay = 1.4
 onready var body = $Body
 onready var label = $Body/Label
 onready var block_particle_scene = preload("res://Scenes/Components/particles/BlockParticle/BlockParticle.tscn")
-
+onready var blinkAnim = $BlinkAnimationPlayer
 
 func _ready():
 	start()
@@ -71,11 +71,15 @@ func check_level_up():
 		Global.emit_signal("level_up")
 	pass
 
+func add_outline_blink():
+	blinkAnim.play("blink-outline")
+	pass
+
 func take_damage(damage):
 	health = max(health - damage, 0)
 	update_healh_label()
 	add_trauma(0.8)
-	
+	add_outline_blink()
 	if health <= 0:
 		add_block_particle()
 		queue_free()

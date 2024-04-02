@@ -1,9 +1,23 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Scenes/player/Player.gd" type="Script" id=1]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 24, 24 )
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0, 0.858824, 0.0705882, 1 )
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0, 0.858824, 0.0705882, 0.101961 )
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
 
 [node name="Player" type="KinematicBody2D"]
 script = ExtResource( 1 )
@@ -22,6 +36,23 @@ margin_left = -25.0
 margin_top = -25.0
 margin_right = 25.0
 margin_bottom = 25.0
+color = Color( 1, 1, 1, 0.901961 )
+
+[node name="ProgressBar" type="ProgressBar" parent="Body"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -25.0
+margin_top = 32.0
+margin_right = 25.0
+margin_bottom = 38.0
+custom_styles/fg = SubResource( 2 )
+custom_styles/bg = SubResource( 3 )
+max_value = 20.0
+value = 10.0
+percent_visible = false
+__meta__ = {
+"_editor_description_": ""
+}
 
 [node name="Timers" type="Node2D" parent="."]
 

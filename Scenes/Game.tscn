@@ -1,4 +1,5 @@
 [gd_scene load_steps=20 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Scenes/Game.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/spawner/block/BlockSpawner.tscn" type="PackedScene" id=2]
@@ -8,6 +9,7 @@
 [ext_resource path="res://Scripts/LevelUpBar.gd" type="Script" id=6]
 [ext_resource path="res://Scenes/menus/levelup/LevelUpMenu.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Assets/Images/bg.png" type="Texture" id=8]
+[ext_resource path="res://Scenes/Components/notifications/BottomNotification.tscn" type="PackedScene" id=8]
 
 [sub_resource type="DynamicFont" id=1]
 size = 82
@@ -379,3 +381,4 @@ margin_right = 1.0
 
 [connection signal="pressed" from="GUI/TopBar/CenterContainer/PauseBtn/Button" to="." method="_on_Button_pressed"]
 [connection signal="pressed" from="GUI/TopBar/CenterContainer/PauseMenu/Resume/PlayButton" to="." method="_on_PlayButton_pressed"]
+[node name="BottomNotification" parent="GUI" instance=ExtResource( 8 )]
