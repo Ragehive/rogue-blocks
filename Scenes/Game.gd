@@ -18,3 +18,13 @@ func instance_player():
 
 func game_end():
 	Global.save_data()
+
+
+func _on_Button_pressed():
+	get_tree().paused=true
+	$GUI/TopBar/CenterContainer/AnimationPlayer.play("pause")
+
+
+func _on_PlayButton_pressed():
+	get_tree().paused=false
+	$GUI/TopBar/CenterContainer/AnimationPlayer.play_backwards("pause")
