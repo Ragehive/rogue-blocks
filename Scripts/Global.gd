@@ -14,31 +14,33 @@ var music_turned_off = false
 
 var is_levelling_up = false
 
+signal pause
+signal unpause
 signal level_up
 signal update_display
 signal level_up_player(level_up_type)
 
 #LEVEL UP OPTIONS
 const level_up_options = {
-	"TOMMY_GUN": {
+	"INCREASE_BULLET_DAMAGE": {
 		"damage": 1,
 		"speed": 0.0,
 		"critical_damage": 0.0
 	},
-	"SNIPER_SCOPE": {
+	"INCREASE_BULLET_SPEED": {
 		"damage": 0.0,
 		"speed": 0.0,
 		"critical_damage": 0.0
 	},
-	"LONG_BARREL": {
+	"INCREASE_CRITICAL_DAMAGE": {
 		"damage": 0.0,
 		"speed": 0.0,
 		"critical_damage": 1.0
 	},
-	"XP_EXPERT": {},
-	"GLUTTONY": {},
-	"DROPBOX": {},
-	"SMALL_MEDKIT": {}
+	"INCREASE_LEVEL_UP_POINTS": {},
+	"INCREASE_COINS": {},
+	"INCREASE_POWERUP_CHANCE": {},
+	"EXTRA_LIFE": {}
 }
 #temporal: time freeze, magnet, bomb
 #powerups examples: extra life, area of effect damage, ricochet, 

@@ -1,10 +1,9 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Scenes/block/Block.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Fonts/Uni Sans Heavy.otf" type="DynamicFontData" id=2]
 [ext_resource path="res://Assets/Images/block-outline.png" type="Texture" id=3]
 [ext_resource path="res://Assets/Images/block.png" type="Texture" id=4]
-[ext_resource path="res://Assets/Images/block-outline-thin.png" type="Texture" id=5]
 
 [sub_resource type="DynamicFont" id=2]
 size = 64
@@ -15,62 +14,10 @@ font_data = ExtResource( 2 )
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 65, 66 )
 
-[sub_resource type="Animation" id=3]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/path = NodePath("Body/Outline2:visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ false ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("Body/Outline2:self_modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 1 ) ]
-}
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 72, 72 )
 
-[sub_resource type="Animation" id=4]
-resource_name = "blink-outline"
-length = 0.3
-tracks/0/type = "value"
-tracks/0/path = NodePath("Body/Outline2:visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.3 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ true, false ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("Body/Outline2:self_modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 0.3 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ) ]
-}
-
-[node name="Block" type="StaticBody2D"]
+[node name="Block" type="StaticBody2D" groups=["enemy"]]
 collision_layer = 2
 collision_mask = 0
 script = ExtResource( 1 )
@@ -102,15 +49,11 @@ visible = false
 scale = Vector2( 0.75, 0.75 )
 texture = ExtResource( 3 )
 
-[node name="Outline2" type="Sprite" parent="Body"]
-visible = false
-modulate = Color( 0, 1, 0.6, 1 )
-scale = Vector2( 0.8, 0.8 )
-texture = ExtResource( 5 )
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
 
-[node name="BlinkAnimationPlayer" type="AnimationPlayer" parent="."]
-anims/RESET = SubResource( 3 )
-anims/blink-outline = SubResource( 4 )
+[node name="Area2D" type="Area2D" parent="." groups=["enemy"]]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource( 3 )
