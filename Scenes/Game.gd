@@ -5,6 +5,10 @@ onready var level_up_menu = $GUI/BottomBar/LevelUpMenu
 onready var bottom_notif = $GUI/BottomNotification
 
 func _ready():
+	start()
+	pass
+
+func start():
 	instance_player()
 	add_notifications()
 	pass

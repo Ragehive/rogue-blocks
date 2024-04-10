@@ -1,84 +1,209 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://Assets/Fonts/Uni Sans Heavy.otf" type="DynamicFontData" id=1]
-[ext_resource path="res://Scenes/themes/normalButton.tres" type="Theme" id=2]
+[ext_resource path="res://Assets/icons/plus.png" type="Texture" id=2]
 [ext_resource path="res://Scenes/menus/mainmenu/MainMenu.gd" type="Script" id=3]
 [ext_resource path="res://Scenes/Components/parrallax/ParallaxBackground.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Assets/Fonts/FukuCatch @Detetiive.otf" type="DynamicFontData" id=5]
+[ext_resource path="res://Assets/icons/gear.png" type="Texture" id=6]
+[ext_resource path="res://Assets/icons/purple gem.png" type="Texture" id=7]
+[ext_resource path="res://Assets/icons/trophy.png" type="Texture" id=8]
+[ext_resource path="res://Assets/icons/leaderboardsComplex.png" type="Texture" id=9]
+[ext_resource path="res://Assets/icons/gamepad.png" type="Texture" id=10]
+[ext_resource path="res://Assets/icons/locked.png" type="Texture" id=11]
+[ext_resource path="res://Assets/icons/menuGrid.png" type="Texture" id=12]
+[ext_resource path="res://Assets/Images/clicktoplayarea.png" type="Texture" id=13]
+[ext_resource path="res://Assets/icons/finger_down.png" type="Texture" id=14]
 
-[sub_resource type="DynamicFont" id=11]
-size = 32
+[sub_resource type="DynamicFont" id=13]
+size = 45
+use_mipmaps = true
+use_filter = true
+extra_spacing_top = 14
 font_data = ExtResource( 1 )
 
 [sub_resource type="DynamicFont" id=1]
-size = 110
+size = 105
 use_mipmaps = true
 use_filter = true
 extra_spacing_char = -7
-font_data = ExtResource( 1 )
+font_data = ExtResource( 5 )
 
 [sub_resource type="DynamicFont" id=12]
-size = 120
+size = 125
 use_mipmaps = true
 use_filter = true
 extra_spacing_char = -6
+font_data = ExtResource( 5 )
+
+[sub_resource type="DynamicFont" id=14]
+size = 36
+use_mipmaps = true
+use_filter = true
+extra_spacing_top = 15
 font_data = ExtResource( 1 )
 
-[sub_resource type="DynamicFont" id=8]
+[sub_resource type="Animation" id=16]
+resource_name = "New Anim"
+length = 3.6
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.9 ),
+"transitions": PoolRealArray( -2, -2 ),
+"update": 0,
+"values": [ Vector2( 1, -6 ), Vector2( 446, -6 ) ]
+}
+
+[sub_resource type="Animation" id=17]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 113, -6 ) ]
+}
+
+[sub_resource type="DynamicFont" id=15]
 size = 32
-extra_spacing_char = 3
-extra_spacing_space = 5
+use_mipmaps = true
+use_filter = true
 font_data = ExtResource( 1 )
+
+[sub_resource type="Animation" id=18]
+resource_name = "New Anim"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/path = NodePath("Control/Top:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=19]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Control/Top:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=20]
+resource_name = "outro"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/path = NodePath("Control/Top:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
 
 [node name="Menu" type="CanvasLayer"]
 script = ExtResource( 3 )
 
 [node name="ParallaxBackground" parent="." instance=ExtResource( 4 )]
 
-[node name="Control" type="Control" parent="."]
-anchor_right = 1.0
-margin_bottom = 131.0
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Control"]
+[node name="Control" type="VBoxContainer" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
 
-[node name="HBoxContainer" type="GridContainer" parent="Control/VBoxContainer"]
+[node name="Top" type="MarginContainer" parent="Control"]
+modulate = Color( 1, 1, 1, 0 )
 margin_right = 720.0
-margin_bottom = 33.0
-grow_horizontal = 0
-grow_vertical = 0
-columns = 2
+margin_bottom = 100.0
+custom_constants/margin_right = 20
+custom_constants/margin_top = 20
+custom_constants/margin_left = 20
+custom_constants/margin_bottom = 20
 
-[node name="Coins" type="Label" parent="Control/VBoxContainer/HBoxContainer"]
-margin_right = 206.0
-margin_bottom = 33.0
-custom_fonts/font = SubResource( 11 )
-text = "COINS: 555757"
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/Top"]
+margin_left = 20.0
+margin_top = 20.0
+margin_right = 700.0
+margin_bottom = 80.0
+
+[node name="TextureRect" type="TextureRect" parent="Control/Top/HBoxContainer"]
+modulate = Color( 1, 0.819608, 0.196078, 1 )
+margin_right = 76.0
+margin_bottom = 60.0
+rect_min_size = Vector2( 76, 0 )
+texture = ExtResource( 6 )
+expand = true
+stretch_mode = 7
+
+[node name="Space" type="TextureRect" parent="Control/Top/HBoxContainer"]
+modulate = Color( 1, 0.819608, 0.196078, 1 )
+margin_left = 80.0
+margin_right = 546.0
+margin_bottom = 60.0
+rect_min_size = Vector2( 86, 0 )
+size_flags_horizontal = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/Top/HBoxContainer"]
+margin_left = 550.0
+margin_right = 680.0
+margin_bottom = 60.0
+
+[node name="Label" type="Label" parent="Control/Top/HBoxContainer/HBoxContainer"]
+margin_right = 70.0
+margin_bottom = 60.0
+custom_fonts/font = SubResource( 13 )
+text = "148"
+align = 1
 valign = 1
 
-[node name="Highscore" type="Label" parent="Control/VBoxContainer/HBoxContainer"]
-margin_left = 210.0
-margin_right = 431.0
-margin_bottom = 33.0
-custom_fonts/font = SubResource( 11 )
-text = "Highscore: 45"
-align = 2
-valign = 1
+[node name="TextureRect3" type="TextureRect" parent="Control/Top/HBoxContainer/HBoxContainer"]
+margin_left = 74.0
+margin_right = 130.0
+margin_bottom = 60.0
+rect_min_size = Vector2( 56, 0 )
+texture = ExtResource( 7 )
+expand = true
+stretch_mode = 6
 
-[node name="Name" type="CenterContainer" parent="."]
-anchor_left = 0.5
-anchor_right = 0.5
-margin_left = -360.0
-margin_right = 360.0
-margin_bottom = 946.0
+[node name="Title" type="MarginContainer" parent="Control"]
+margin_top = 104.0
+margin_right = 720.0
+margin_bottom = 604.0
+rect_min_size = Vector2( 0, 500 )
+custom_constants/margin_top = 250
 
-[node name="Label" type="Label" parent="Name"]
-margin_left = 180.0
-margin_top = 417.0
-margin_right = 539.0
-margin_bottom = 528.0
+[node name="Label" type="Label" parent="Control/Title"]
+margin_top = 325.0
+margin_right = 720.0
+margin_bottom = 425.0
 custom_colors/font_color = Color( 0.368627, 1, 0.509804, 1 )
-custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_colors/font_color_shadow = Color( 0.309804, 0.309804, 0.309804, 0.196078 )
 custom_constants/shadow_offset_x = 8
 custom_constants/shadow_offset_y = 8
 custom_fonts/font = SubResource( 1 )
@@ -86,73 +211,197 @@ text = "BLOCKS"
 align = 1
 valign = 1
 
-[node name="Label" type="Label" parent="Name/Label"]
+[node name="Label" type="Label" parent="Control/Title/Label"]
+show_behind_parent = true
 anchor_left = 0.5
+anchor_top = 1.0
 anchor_right = 0.5
-margin_left = -180.0
-margin_top = -112.0
-margin_right = 180.0
-margin_bottom = 9.0
-custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+anchor_bottom = 1.0
+margin_left = -223.0
+margin_top = -231.0
+margin_right = 223.0
+margin_bottom = -107.0
+custom_colors/font_color_shadow = Color( 0.423529, 0.423529, 0.423529, 0.196078 )
 custom_constants/shadow_offset_x = 8
 custom_constants/shadow_offset_y = 8
 custom_fonts/font = SubResource( 12 )
 text = "ROGUE"
 
-[node name="Buttons" type="Control" parent="."]
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/Title/Label"]
+modulate = Color( 1, 1, 1, 0.329412 )
+anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_top = 983.0
-margin_bottom = -82.0
+margin_bottom = 70.0
+alignment = 1
 
-[node name="Play" type="Button" parent="Buttons"]
+[node name="Label2" type="Label" parent="Control/Title/Label/HBoxContainer"]
+margin_left = 217.0
+margin_right = 340.0
+margin_bottom = 70.0
+size_flags_vertical = 7
+custom_fonts/font = SubResource( 14 )
+text = "STAGE 1"
+align = 1
+valign = 1
+
+[node name="Label3" type="Label" parent="Control/Title/Label/HBoxContainer"]
+margin_left = 344.0
+margin_right = 373.0
+margin_bottom = 70.0
+size_flags_vertical = 7
+custom_fonts/font = SubResource( 14 )
+text = "  -"
+align = 1
+valign = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/Title/Label/HBoxContainer"]
+margin_left = 377.0
+margin_right = 502.0
+margin_bottom = 70.0
+custom_constants/separation = 0
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Control/Title/Label/HBoxContainer/HBoxContainer"]
+margin_right = 70.0
+margin_bottom = 70.0
+rect_min_size = Vector2( 70, 0 )
+texture = ExtResource( 8 )
+expand = true
+stretch_mode = 6
+
+[node name="Label3" type="Label" parent="Control/Title/Label/HBoxContainer/HBoxContainer"]
+margin_left = 70.0
+margin_right = 125.0
+margin_bottom = 70.0
+size_flags_vertical = 7
+custom_fonts/font = SubResource( 14 )
+text = "100"
+align = 1
+valign = 1
+
+[node name="StartGame" type="Control" parent="Control"]
+margin_top = 608.0
+margin_right = 720.0
+margin_bottom = 876.0
+rect_min_size = Vector2( 0, 250 )
+size_flags_vertical = 3
+
+[node name="Bottom" type="Control" parent="Control"]
+margin_top = 880.0
+margin_right = 720.0
+margin_bottom = 1280.0
+rect_min_size = Vector2( 0, 400 )
+
+[node name="ButtonsContainer" type="CenterContainer" parent="Control/Bottom"]
+modulate = Color( 0.482353, 1, 0.894118, 0.313726 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/Bottom/ButtonsContainer"]
+margin_left = 97.0
+margin_top = 140.0
+margin_right = 622.0
+margin_bottom = 260.0
+custom_constants/separation = 15
+
+[node name="TextureRect" type="TextureRect" parent="Control/Bottom/ButtonsContainer/HBoxContainer"]
+margin_right = 120.0
+margin_bottom = 120.0
+rect_min_size = Vector2( 120, 120 )
+texture = ExtResource( 12 )
+expand = true
+stretch_mode = 6
+
+[node name="TextureRect2" type="TextureRect" parent="Control/Bottom/ButtonsContainer/HBoxContainer"]
+visible = false
+margin_left = 135.0
+margin_right = 255.0
+margin_bottom = 120.0
+rect_min_size = Vector2( 120, 120 )
+texture = ExtResource( 2 )
+expand = true
+stretch_mode = 6
+
+[node name="TextureRect3" type="TextureRect" parent="Control/Bottom/ButtonsContainer/HBoxContainer"]
+margin_left = 135.0
+margin_right = 255.0
+margin_bottom = 120.0
+rect_min_size = Vector2( 120, 120 )
+texture = ExtResource( 10 )
+expand = true
+stretch_mode = 6
+
+[node name="TextureRect4" type="TextureRect" parent="Control/Bottom/ButtonsContainer/HBoxContainer"]
+margin_left = 270.0
+margin_right = 390.0
+margin_bottom = 120.0
+rect_min_size = Vector2( 120, 120 )
+texture = ExtResource( 9 )
+expand = true
+stretch_mode = 6
+
+[node name="TextureRect5" type="TextureRect" parent="Control/Bottom/ButtonsContainer/HBoxContainer"]
+margin_left = 405.0
+margin_right = 525.0
+margin_bottom = 120.0
+rect_min_size = Vector2( 120, 120 )
+texture = ExtResource( 11 )
+expand = true
+stretch_mode = 6
+
+[node name="Clicktoplay" type="Control" parent="Control/Bottom"]
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_top = -358.001
+margin_bottom = -85.0006
+size_flags_vertical = 3
+
+[node name="TextureRect" type="TextureRect" parent="Control/Bottom/Clicktoplay"]
+self_modulate = Color( 1, 1, 1, 0.0784314 )
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -117.98
-margin_top = -371.5
-margin_right = 117.98
-margin_bottom = -311.5
-grow_horizontal = 2
-grow_vertical = 2
-theme = ExtResource( 2 )
-custom_fonts/font = SubResource( 8 )
-text = "PLAY"
-icon_align = 1
+margin_left = -248.0
+margin_top = -25.0
+margin_right = 248.0
+margin_bottom = 25.0
+rect_min_size = Vector2( 0, 50 )
+texture = ExtResource( 13 )
+stretch_mode = 6
 
-[node name="Settings" type="Button" parent="Buttons"]
+[node name="TextureRect" type="TextureRect" parent="Control/Bottom/Clicktoplay/TextureRect"]
+margin_left = 113.0
+margin_top = -6.0
+margin_right = 183.002
+margin_bottom = 94.0
+rect_min_size = Vector2( 70, 100 )
+texture = ExtResource( 14 )
+expand = true
+stretch_mode = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Control/Bottom/Clicktoplay/TextureRect/TextureRect"]
+autoplay = "New Anim"
+"anims/New Anim" = SubResource( 16 )
+anims/RESET = SubResource( 17 )
+
+[node name="Label" type="Label" parent="Control/Bottom/Clicktoplay/TextureRect"]
+modulate = Color( 1, 1, 1, 0.0784314 )
 anchor_left = 0.5
-anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -117.98
-margin_top = -271.5
-margin_right = 117.98
-margin_bottom = -211.5
-grow_horizontal = 2
-grow_vertical = 2
-theme = ExtResource( 2 )
-custom_fonts/font = SubResource( 8 )
-text = "SETTINGS"
-icon_align = 1
+margin_left = -117.5
+margin_top = -48.0
+margin_right = 117.5
+margin_bottom = -15.0
+custom_fonts/font = SubResource( 15 )
+text = "Slide to shoot"
 
-[node name="Quit" type="Button" parent="Buttons"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -117.98
-margin_top = -171.5
-margin_right = 117.98
-margin_bottom = -111.5
-grow_horizontal = 2
-grow_vertical = 2
-theme = ExtResource( 2 )
-custom_fonts/font = SubResource( 8 )
-text = "QUIT"
-icon_align = 1
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "New Anim"
+"anims/New Anim" = SubResource( 18 )
+anims/RESET = SubResource( 19 )
+anims/outro = SubResource( 20 )
 
-[connection signal="pressed" from="Buttons/Play" to="." method="_on_Play_pressed"]
-[connection signal="pressed" from="Buttons/Settings" to="." method="_on_Settings_pressed"]
-[connection signal="pressed" from="Buttons/Quit" to="." method="_on_Quit_pressed"]
+[node name="Tween" type="Tween" parent="."]
