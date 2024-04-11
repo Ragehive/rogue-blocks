@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://Scenes/Game.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/spawner/block/BlockSpawner.tscn" type="PackedScene" id=2]
@@ -8,21 +8,49 @@
 [ext_resource path="res://Scripts/LevelUpBar.gd" type="Script" id=6]
 [ext_resource path="res://Scenes/menus/levelup/LevelUpMenu.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Scenes/Components/notifications/BottomNotification.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Assets/Images/progress/back.png" type="Texture" id=9]
+[ext_resource path="res://Assets/icons/pause.png" type="Texture" id=10]
+[ext_resource path="res://Assets/icons/purple gem.png" type="Texture" id=11]
+[ext_resource path="res://Assets/icons/coin.png" type="Texture" id=12]
+[ext_resource path="res://Assets/icons/pets.png" type="Texture" id=13]
+[ext_resource path="res://Assets/Images/progress/progress.png" type="Texture" id=14]
+[ext_resource path="res://Scripts/TimerLabel.gd" type="Script" id=15]
 
-[sub_resource type="DynamicFont" id=1]
-size = 82
+[sub_resource type="StyleBoxFlat" id=9]
+bg_color = Color( 0.145098, 0.145098, 0.164706, 1 )
+
+[sub_resource type="DynamicFont" id=5]
+size = 56
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
 use_mipmaps = true
 use_filter = true
+extra_spacing_top = 44
 font_data = ExtResource( 4 )
 
-[sub_resource type="StyleBoxFlat" id=4]
-bg_color = Color( 0, 0.858824, 0.0705882, 1 )
+[sub_resource type="StyleBoxFlat" id=6]
+bg_color = Color( 0, 0, 0, 0 )
+border_width_top = 6
+border_width_right = 6
+border_width_bottom = 6
+border_color = Color( 0, 0, 0, 0 )
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
 
-[sub_resource type="StyleBoxFlat" id=2]
-bg_color = Color( 0, 0.858824, 0.0705882, 0.101961 )
+[sub_resource type="StyleBoxFlat" id=7]
+bg_color = Color( 0, 0, 0, 1 )
 
-[sub_resource type="DynamicFont" id=3]
+[sub_resource type="DynamicFont" id=8]
 size = 32
+use_mipmaps = true
+use_filter = true
+extra_spacing_top = 2
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=10]
+size = 40
+outline_size = 3
+outline_color = Color( 0, 0, 0, 1 )
 use_mipmaps = true
 use_filter = true
 font_data = ExtResource( 4 )
@@ -36,97 +64,6 @@ script = ExtResource( 1 )
 
 [node name="GUI" type="CanvasLayer" parent="."]
 
-[node name="TopBar" type="Control" parent="GUI"]
-anchor_right = 1.0
-margin_bottom = 427.0
-
-[node name="CenterContainer" type="CenterContainer" parent="GUI/TopBar"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-
-[node name="ColorRect" type="ColorRect" parent="GUI/TopBar/CenterContainer"]
-margin_left = 185.0
-margin_top = 88.0
-margin_right = 535.0
-margin_bottom = 338.0
-rect_min_size = Vector2( 350, 250 )
-color = Color( 0, 0, 0, 0.0235294 )
-
-[node name="Highscore" type="Label" parent="GUI/TopBar/CenterContainer"]
-margin_left = 335.0
-margin_top = 129.0
-margin_right = 384.0
-margin_bottom = 298.0
-custom_fonts/font = SubResource( 1 )
-text = "0
-"
-script = ExtResource( 5 )
-
-[node name="LevelUpBar" type="ProgressBar" parent="GUI/TopBar/CenterContainer/Highscore"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -125.0
-margin_top = 58.5
-margin_right = 125.0
-margin_bottom = 75.5
-custom_styles/fg = SubResource( 4 )
-custom_styles/bg = SubResource( 2 )
-max_value = 20.0
-percent_visible = false
-script = ExtResource( 6 )
-
-[node name="ColorRect" type="ColorRect" parent="GUI/TopBar/CenterContainer/Highscore/LevelUpBar"]
-anchor_top = 0.5
-anchor_bottom = 0.5
-margin_left = -20.0
-margin_top = -20.0
-margin_right = 20.0
-margin_bottom = 20.0
-color = Color( 0, 0.858824, 0.0705882, 1 )
-
-[node name="Label" type="Label" parent="GUI/TopBar/CenterContainer/Highscore/LevelUpBar/ColorRect"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -20.0
-margin_top = -13.0
-margin_right = 20.0
-margin_bottom = 20.0
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-custom_fonts/font = SubResource( 3 )
-text = "1"
-align = 1
-valign = 1
-
-[node name="ColorRect2" type="ColorRect" parent="GUI/TopBar/CenterContainer/Highscore/LevelUpBar"]
-anchor_left = 1.0
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-margin_left = -20.0
-margin_top = -20.0
-margin_right = 20.0
-margin_bottom = 20.0
-color = Color( 0, 0.858824, 0.0705882, 1 )
-
-[node name="Label" type="Label" parent="GUI/TopBar/CenterContainer/Highscore/LevelUpBar/ColorRect2"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -20.0
-margin_top = -13.0
-margin_right = 20.0
-margin_bottom = 20.0
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-custom_fonts/font = SubResource( 3 )
-text = "2"
-align = 1
-valign = 1
-
 [node name="BottomBar" type="Control" parent="GUI"]
 anchor_left = 0.5
 anchor_top = 1.0
@@ -139,3 +76,208 @@ margin_right = 1.0
 [node name="LevelUpMenu" parent="GUI/BottomBar" instance=ExtResource( 7 )]
 
 [node name="BottomNotification" parent="GUI" instance=ExtResource( 8 )]
+
+[node name="Top" type="MarginContainer" parent="GUI"]
+anchor_right = 1.0
+margin_bottom = 178.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GUI/Top"]
+margin_right = 724.0
+margin_bottom = 230.0
+custom_constants/separation = 0
+
+[node name="StatContainer" type="Panel" parent="GUI/Top/VBoxContainer"]
+margin_right = 724.0
+margin_bottom = 150.0
+rect_min_size = Vector2( 0, 150 )
+custom_styles/panel = SubResource( 9 )
+
+[node name="TimerLabel" type="Label" parent="GUI/Top/VBoxContainer/StatContainer"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -105.0
+margin_top = -103.0
+margin_right = 105.0
+margin_bottom = -2.0
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_y = 6
+custom_fonts/font = SubResource( 5 )
+text = "00:00"
+align = 1
+valign = 2
+script = ExtResource( 15 )
+
+[node name="Timer" type="Timer" parent="GUI/Top/VBoxContainer/StatContainer/TimerLabel"]
+autostart = true
+
+[node name="Panel" type="Panel" parent="GUI/Top/VBoxContainer/StatContainer"]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_top = -41.0
+margin_right = 98.0
+margin_bottom = 41.0
+custom_styles/panel = SubResource( 6 )
+
+[node name="TextureButton2" type="TextureButton" parent="GUI/Top/VBoxContainer/StatContainer/Panel"]
+modulate = Color( 0, 0, 0, 1 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_scale = Vector2( 1.2, 1.2 )
+rect_pivot_offset = Vector2( 45, 41 )
+texture_normal = ExtResource( 10 )
+expand = true
+stretch_mode = 5
+
+[node name="TextureButton" type="TextureButton" parent="GUI/Top/VBoxContainer/StatContainer/Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture_normal = ExtResource( 10 )
+expand = true
+stretch_mode = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GUI/Top/VBoxContainer/StatContainer"]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -260.0
+margin_top = -42.0
+margin_bottom = 42.0
+rect_min_size = Vector2( 80, 0 )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="GUI/Top/VBoxContainer/StatContainer/VBoxContainer"]
+margin_right = 260.0
+margin_bottom = 40.0
+custom_constants/separation = 20
+alignment = 2
+
+[node name="Panel" type="Panel" parent="GUI/Top/VBoxContainer/StatContainer/VBoxContainer/HBoxContainer"]
+margin_right = 100.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 100, 40 )
+custom_styles/panel = SubResource( 7 )
+
+[node name="TextureRect" type="TextureRect" parent="GUI/Top/VBoxContainer/StatContainer/VBoxContainer/HBoxContainer/Panel"]
+margin_left = -16.0
+margin_right = 24.0
+margin_bottom = 40.0
+texture = ExtResource( 11 )
+expand = true
+
+[node name="Label" type="Label" parent="GUI/Top/VBoxContainer/StatContainer/VBoxContainer/HBoxContainer/Panel"]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -75.0
+margin_top = -16.5
+margin_right = -6.0
+margin_bottom = 18.5
+custom_fonts/font = SubResource( 8 )
+text = "1000"
+align = 1
+valign = 1
+
+[node name="Panel2" type="Panel" parent="GUI/Top/VBoxContainer/StatContainer/VBoxContainer/HBoxContainer"]
+margin_left = 120.0
+margin_right = 260.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 140, 40 )
+custom_styles/panel = SubResource( 7 )
+
+[node name="TextureRect" type="TextureRect" parent="GUI/Top/VBoxContainer/StatContainer/VBoxContainer/HBoxContainer/Panel2"]
+margin_left = -16.0
+margin_right = 24.0
+margin_bottom = 40.0
+texture = ExtResource( 12 )
+expand = true
+
+[node name="Label" type="Label" parent="GUI/Top/VBoxContainer/StatContainer/VBoxContainer/HBoxContainer/Panel2"]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -91.0
+margin_top = -16.5
+margin_right = -22.0
+margin_bottom = 18.5
+custom_fonts/font = SubResource( 8 )
+text = "1000"
+align = 1
+valign = 1
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="GUI/Top/VBoxContainer/StatContainer/VBoxContainer"]
+margin_top = 44.0
+margin_right = 260.0
+margin_bottom = 84.0
+alignment = 2
+
+[node name="Panel2" type="Panel" parent="GUI/Top/VBoxContainer/StatContainer/VBoxContainer/HBoxContainer2"]
+margin_left = 120.0
+margin_right = 260.0
+margin_bottom = 40.0
+grow_horizontal = 0
+grow_vertical = 0
+rect_min_size = Vector2( 140, 40 )
+custom_styles/panel = SubResource( 7 )
+
+[node name="TextureRect" type="TextureRect" parent="GUI/Top/VBoxContainer/StatContainer/VBoxContainer/HBoxContainer2/Panel2"]
+margin_left = -16.0
+margin_right = 24.0
+margin_bottom = 40.0
+texture = ExtResource( 13 )
+expand = true
+
+[node name="HighscoreLabel" type="Label" parent="GUI/Top/VBoxContainer/StatContainer/VBoxContainer/HBoxContainer2/Panel2"]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -91.0
+margin_top = -16.5
+margin_right = -22.0
+margin_bottom = 18.5
+grow_horizontal = 0
+grow_vertical = 0
+custom_fonts/font = SubResource( 8 )
+text = "1000"
+align = 1
+valign = 1
+script = ExtResource( 5 )
+
+[node name="TextureProgress" type="TextureProgress" parent="GUI/Top/VBoxContainer"]
+margin_top = 150.0
+margin_right = 724.0
+margin_bottom = 230.0
+rect_min_size = Vector2( 0, 70 )
+max_value = 20.0
+texture_under = ExtResource( 9 )
+texture_progress = ExtResource( 14 )
+script = ExtResource( 6 )
+
+[node name="MarginContainer" type="MarginContainer" parent="GUI/Top/VBoxContainer/TextureProgress"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -84.0
+margin_top = -80.0
+custom_constants/margin_right = 25
+custom_constants/margin_left = 0
+
+[node name="Label" type="Label" parent="GUI/Top/VBoxContainer/TextureProgress/MarginContainer"]
+margin_top = 19.0
+margin_right = 59.0
+margin_bottom = 60.0
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_y = 3
+custom_fonts/font = SubResource( 10 )
+text = "32"
+align = 2
+valign = 1
+
+[node name="Tween" type="Tween" parent="GUI/Top/VBoxContainer/TextureProgress"]
+
+[connection signal="timeout" from="GUI/Top/VBoxContainer/StatContainer/TimerLabel/Timer" to="GUI/Top/VBoxContainer/StatContainer/TimerLabel" method="_on_Timer_timeout"]

@@ -14,6 +14,7 @@ var music_turned_off = false
 
 var is_levelling_up = false
 
+signal enemy_kill
 signal level_up
 signal update_display
 signal level_up_player(level_up_type)

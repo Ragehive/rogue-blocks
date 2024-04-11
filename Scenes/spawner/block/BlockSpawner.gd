@@ -33,7 +33,7 @@ func set_positions():
 	var base_pos = (get_viewport_rect().size.x / 2) - ( spacing * 2 )
 	for i in positions.get_child_count():
 		var positioner = positions.get_child(i);
-		positioner.global_position = Vector2(base_pos + (spacing * i ) + spacing/2, -80)
+		positioner.global_position = Vector2(base_pos + (spacing * i ) + spacing/2, 120)
 		positioner.global_position.x
 
 

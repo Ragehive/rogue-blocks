@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Scenes/block/Block.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Fonts/Uni Sans Heavy.otf" type="DynamicFontData" id=2]
 [ext_resource path="res://Assets/Images/block-outline.png" type="Texture" id=3]
 [ext_resource path="res://Assets/Images/block.png" type="Texture" id=4]
 [ext_resource path="res://Assets/Images/block-outline-thin.png" type="Texture" id=5]
+[ext_resource path="res://Assets/Sounds/DM-CGS-32.wav" type="AudioStream" id=6]
 
 [sub_resource type="DynamicFont" id=2]
 size = 64
@@ -114,3 +115,7 @@ shape = SubResource( 1 )
 [node name="BlinkAnimationPlayer" type="AnimationPlayer" parent="."]
 anims/RESET = SubResource( 3 )
 anims/blink-outline = SubResource( 4 )
+
+[node name="HitSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 6 )
+pitch_scale = 0.82

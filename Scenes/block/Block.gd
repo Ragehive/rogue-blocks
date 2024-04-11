@@ -16,7 +16,7 @@ onready var body = $Body
 onready var label = $Body/Label
 onready var block_particle_scene = preload("res://Scenes/Components/particles/BlockParticle/BlockParticle.tscn")
 onready var blinkAnim = $BlinkAnimationPlayer
-
+onready var hitSound = $HitSound
 func _ready():
 	start()
 	pass
@@ -69,6 +69,8 @@ func shake(delta):
 func check_level_up():
 	if Global.score >= Global.next_score:
 		Global.emit_signal("level_up")
+	else:
+		Global.emit_signal("enemy_kill")
 	pass
 
 func add_outline_blink():
@@ -85,5 +87,7 @@ func take_damage(damage):
 		queue_free()
 		Global.score += max_health
 		check_level_up()
+	else:
+		hitSound.play()
 #	add_label_particle(damage)
 	pass

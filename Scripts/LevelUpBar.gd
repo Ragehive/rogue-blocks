@@ -1,20 +1,23 @@
-extends ProgressBar
+extends TextureProgress
 
-onready var first_level_label = $ColorRect/Label
-onready var second_level_label = $ColorRect2/Label
+onready var level_label = $MarginContainer/Label
+onready var tween = $Tween
 
 func _ready():
 	update_display()
 	Global.connect('update_display', self, "update_display")
+	Global.connect("enemy_kill", self, "update_progress")
 	pass
 
-func _process(delta):
-	value = Global.score
-	pass
 
 func update_display():
 	min_value = Global.score
 	max_value = Global.next_score
-	first_level_label.text = str(Global.level)
-	second_level_label.text = str(Global.next_level)
+	level_label.text = str(Global.level)
+	pass
+
+func update_progress():
+	value = Global.score
+#	tween.interpolate_property(self, "value", value, Global.score, 0.1,Tween.TRANS_ELASTIC, Tween.EASE_IN)
+#	tween.start()
 	pass

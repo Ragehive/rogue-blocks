@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/You_re in the Future.ogg-9594ddf977868faee4ce92656d758c2e.oggstr"
+
+[deps]
+
+source_file="res://Assets/Music/You_re in the Future.ogg"
+dest_files=[ "res://.import/You_re in the Future.ogg-9594ddf977868faee4ce92656d758c2e.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

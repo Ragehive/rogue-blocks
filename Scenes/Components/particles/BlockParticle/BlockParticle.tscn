@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Assets/Images/block-outline.png" type="Texture" id=1]
+[ext_resource path="res://Assets/Sounds/DM-CGS-03.wav" type="AudioStream" id=2]
 
 [sub_resource type="Animation" id=1]
 resource_name = "New Anim"
@@ -75,6 +76,7 @@ tracks/1/keys = {
 scale = Vector2( 0.7, 0.7 )
 
 [node name="Sprite" type="Sprite" parent="."]
+self_modulate = Color( 0, 1, 0.6, 1 )
 scale = Vector2( 0.7, 0.7 )
 texture = ExtResource( 1 )
 
@@ -82,3 +84,9 @@ texture = ExtResource( 1 )
 autoplay = "New Anim"
 "anims/New Anim" = SubResource( 1 )
 anims/RESET = SubResource( 2 )
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 2 )
+volume_db = -10.0
+pitch_scale = 0.64
+autoplay = true

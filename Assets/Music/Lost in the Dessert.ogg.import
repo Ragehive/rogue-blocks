@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Lost in the Dessert.ogg-29a1b01942a1af205aaaa0d5acb9e88c.oggstr"
+
+[deps]
+
+source_file="res://Assets/Music/Lost in the Dessert.ogg"
+dest_files=[ "res://.import/Lost in the Dessert.ogg-29a1b01942a1af205aaaa0d5acb9e88c.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
