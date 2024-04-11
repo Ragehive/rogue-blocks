@@ -5,7 +5,7 @@ var is_active = true
 var release = false
 
 # MOVeMENT 
-var offset = Vector2(0, -100)
+var offset = Vector2(0, -150)
 var move_lerp = 10
 var last_pos = Vector2.ZERO
 var kickback_rate = 10
@@ -24,17 +24,15 @@ const MAX_HEALTH = 10
 #NODES 
 onready var body = $Body
 onready var bullet_scene = preload("res://Scenes/Components/bullet/Bullet.tscn")
+onready var reaction_particle_scene = preload("res://Scenes/Components/particles/ReactionParticle/ReactionParticle.tscn")
 onready var tween = $Tween
 
 #TIMERS
 onready var shootTimer = $Timers/ShootTimer
 
-var is_pause = false
 func _ready():
 	intro_animation()
 	Global.connect("level_up_player", self, "add_upgrades")
-	Global.connect("pause", self, "pause")
-	Global.connect("unpause", self, "unpause")
 	pass
 	
 func intro_animation():
@@ -45,9 +43,8 @@ func intro_animation():
 
 func _physics_process(delta):
 	if is_active:
-		if is_pause == false:
-			shake(delta)
-			movement(delta)
+		shake(delta)
+		movement(delta)
 	pass
 
 func _trauma():
@@ -89,16 +86,20 @@ func shoot_bullet():
 	get_parent().add_child(bullet)
 	pass
 
+func add_reaction_particles():
+	var scene = reaction_particle_scene.instance()
+	scene.global_position = global_position + Vector2(20, -10)
+	get_parent().add_child(scene)
+	pass
+
 func add_upgrades(level_up_type):
-	print(level_up_type, "evel up")
+	add_reaction_particles()
 	match (level_up_type):
 		"INCREASE_BULLET_SPEED":
 			shootTimer.wait_time = clamp(shootTimer.wait_time - 0.075, 0.05, 0.8)
 			print(shootTimer.wait_time, 'asd')
 	pass
+
 func _on_ShootRate_timeout():
 	shoot_bullet()
 	pass # Replace with function body.
-
-func pause():
-	is_pause = true

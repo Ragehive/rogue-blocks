@@ -11,10 +11,8 @@ var positionArr = []
 
 var health_diff = 0
 var reduce_block_speed = 0
-var is_pause = false
 
 func _ready():
-	Global.connect("pause", self, "pause")
 	randomize()
 	set_positions()
 	for i in positions.get_children():
@@ -56,10 +54,9 @@ func spawn_blocks(block_amt):
 
 
 func _on_SpawnTimer_timeout():
-	if is_pause == false:
-		randomize()
-		spawn_blocks(rand_range(0,4))
-		pass # Replace with function body.
+	randomize()
+	spawn_blocks(rand_range(0,4))
+	pass # Replace with function body.
 
 
 func _on_DifficulyTimer_timeout():
@@ -74,6 +71,3 @@ func _on_BlockSpeedTimer_timeout():
 	spawn_timer.wait_time += 0.2
 	reduce_block_speed += 10
 	pass # Replace with function body.
-
-func pause():
-	is_pause = true

@@ -17,11 +17,7 @@ onready var label = $Body/Label
 onready var block_particle_scene = preload("res://Scenes/Components/particles/BlockParticle/BlockParticle.tscn")
 onready var blinkAnim = $BlinkAnimationPlayer
 onready var hitSound = $HitSound
-
-var is_pause = false
-
 func _ready():
-	Global.connect("pause", self, "pause")
 	start()
 	pass
 
@@ -35,8 +31,7 @@ func _process(delta):
 	shake(delta)
 
 func _physics_process(delta):
-	if is_pause == false:
-		move_local_y(speed * delta)
+	move_local_y(speed * delta)
 	pass
 
 func _trauma():
@@ -78,11 +73,15 @@ func check_level_up():
 		Global.emit_signal("enemy_kill")
 	pass
 
+func add_outline_blink():
+	blinkAnim.play("blink-outline")
+	pass
+
 func take_damage(damage):
 	health = max(health - damage, 0)
 	update_healh_label()
 	add_trauma(0.8)
-	
+	add_outline_blink()
 	if health <= 0:
 		add_block_particle()
 		queue_free()
@@ -92,6 +91,3 @@ func take_damage(damage):
 		hitSound.play()
 #	add_label_particle(damage)
 	pass
-
-func pause():
-	is_pause = true

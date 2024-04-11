@@ -14,8 +14,6 @@ var music_turned_off = false
 
 var is_levelling_up = false
 
-signal pause
-signal unpause
 signal enemy_kill
 signal level_up
 signal update_display
