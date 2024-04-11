@@ -24,8 +24,7 @@ func add_upgrades():
 	pass
 
 func _physics_process(delta):
-	var direction = Vector2(0, -features.speed)
-	move_and_collide(direction * delta)
+	move_and_collide(Vector2(0, -features.speed) * delta)
 
 func instance_hit_particle():
 	var object = hit_particle_scene.instance()
